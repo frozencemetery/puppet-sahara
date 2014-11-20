@@ -45,12 +45,13 @@ recommend you consult and understand the
 ```puppet
 class { 'sahara':
   database_connection => 'mysql://sahara:a_big_secret@127.0.0.1/sahara',
-  verbose => false,
+  verbose => true,
+  debug => true,
   os_username => 'admin',
   os_password => 'secrets_everywhere',
   os_tenant_name => 'admin',
   os_auth_url => 'http://127.0.0.1:5000/v2.0/',
-  os_identity_url => 'http://127.0.0.1:35357/',
+  identity_url => 'http://127.0.0.1:35357/',
   service_host => '127.0.0.1',
   service_port => 8386,
   use_neutron => true,
