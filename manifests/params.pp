@@ -5,9 +5,9 @@
 class sahara::params {
   case $::osfamily {
     'RedHat': {
-      $package_name =        'openstack-sahara',
-      $client_package_name = 'python-saharaclient',
-      $service_name =        'openstack-sahara-all',
+      $package_name =        'openstack-sahara'
+      $client_package_name = 'python-saharaclient'
+      $service_name =        'openstack-sahara-all'
     }
     default: {
       fail("Unsupported osfamily: ${::osfamily} operatingsystem: \
