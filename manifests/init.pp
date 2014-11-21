@@ -90,11 +90,6 @@ class sahara(
     ensure => $package_ensure,
     name => $::sahra::params::package_name,
   }
-  package { 'saharaclient':
-    ensure => $package_ensure,
-    name => $::sahara::params::client_package_name,
-    require => Package['sahara'],
-  }
 
   Package['sahara'] -> Sahara_config<||>
 
