@@ -27,7 +27,7 @@ Module Description
 Setup
 -----
 
-**What the sahra module affects:**
+**What the sahara module affects:**
 
 * sahara, the hadoop clustering service for Openstack.
 

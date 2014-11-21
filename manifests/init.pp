@@ -88,7 +88,7 @@ class sahara(
   
   package { 'sahara':
     ensure => $package_ensure,
-    name => $::sahra::params::package_name,
+    name => $::sahara::params::package_name,
   }
 
   Package['sahara'] -> Sahara_config<||>
