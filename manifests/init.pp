@@ -100,7 +100,9 @@ class sahara(
     'DEFAULT/debug': value => $debug;
     'DEFAULT/verbose': value => $verbose;
     
-    'database/connection': value => $database_connection;
+    'database/connection':
+      value => $database_connection,
+      secret => true;
 
     'keystone_authtoken/auth_uri': value => $os_auth_url;
     'keystone_authtoken/identity_uri': value => $identity_url;
