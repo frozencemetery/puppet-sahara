@@ -44,7 +44,7 @@ recommend you consult and understand the
 
 ```puppet
 class { 'sahara':
-  database_connection => 'mysql://sahara:a_big_secret@127.0.0.1/sahara',
+  database_connection => 'mysql://sahara:a_big_secret@127.0.0.1:3306/sahara',
   verbose => true,
   debug => true,
   os_username => 'admin',
