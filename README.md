@@ -22,7 +22,8 @@ Overview
 Module Description
 ------------------
 
-- [ ] TODO
+The sahara module is an attempt to make Puppet capable of managing the
+entirety of heat.
 
 Setup
 -----
@@ -37,7 +38,7 @@ Setup
 
 ### Beginning with sahara
 
-To utilize the sahara module's functionality you will need to declare multiple
+To use the sahara module's functionality you will need to declare multiple
 resources.  This is not an exhaustive list of all the components needed; we
 recommend you consult and understand the
 [core of openstack](http://docs.openstack.org) documentation.
@@ -75,12 +76,13 @@ Implementation
 
 ### sahara
 
-- [ ] TODO
+sahara is a combination of Puppet manifests and ruby code to deliver
+configuration and extra functionality through types and providers.
 
 Limitations
 -----------
 
-- [ ] TODO
+Batman has no limits.
 
 Development
 -----------
