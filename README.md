@@ -44,7 +44,10 @@ recommend you consult and understand the
 
 ```puppet
 # First, install a mysql server
-class { 'mysql::server': }
+class { 'mysql::server':
+  # many configurations will need this line, too
+  package_name => 'mariadb-galera-server',
+}
 
 # Then, create a database
 class { 'sahara::db::mysql':
