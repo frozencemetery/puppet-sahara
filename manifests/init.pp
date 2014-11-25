@@ -128,7 +128,7 @@ class sahara(
       secret => true;
   }
 
-  Sahara_config<||> -> Exec['sahara-dbmanage']
+  Sahara_config<||> ~> Exec['sahara-dbmanage']
 
   exec { 'sahara-dbmanage':
     command => $::sahara::params::dbmanage_command,

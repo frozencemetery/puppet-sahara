@@ -54,5 +54,5 @@ class sahara::db::mysql(
     allowed_hosts => $allowed_hosts,
   }
 
-  ::Openstacklib::Db::Mysql['sahara'] -> Sahara_config<||>
+  ::Openstacklib::Db::Mysql['sahara'] ~> Exec<| title == 'sahara-dbmanage' |>
 }
