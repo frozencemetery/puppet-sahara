@@ -43,7 +43,10 @@ recommend you consult and understand the
 [core of openstack](http://docs.openstack.org) documentation.
 
 ```puppet
-# first, create a database
+# First, install a mysql server
+class { 'mysql::server': }
+
+# Then, create a database
 class { 'sahara::db::mysql':
   password => 'a_big_secret',
 }
