@@ -50,7 +50,7 @@ class sahara::db::mysql(
     dbname => $dbname,
     host => $host,
     charset => $charset,
-    collate => $collate
+    collate => $collate,
     allowed_hosts => $allowed_hosts,
   }
 
