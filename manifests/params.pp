@@ -3,6 +3,8 @@
 # Parameters for puppet-sahara
 #
 class sahara::params {
+  $dbmanage_command =
+    'sahara-db-manage --config-file /etc/sahara/sahara.conf upgrade head'
   case $::osfamily {
     'RedHat': {
       $package_name =        'openstack-sahara'

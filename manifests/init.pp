@@ -93,6 +93,21 @@ class sahara(
 
   Package['sahara'] -> Sahara_config<||>
 
+  validate_re($database_connection,
+    '(sqlite|mysql):\/\/(\S+:\S+@\S+\/\S+)?')
+  case $database_connection {
+    /^mysql:\/\//: {
+      require mysql::bindings
+      require mysql::bindings::python
+    }
+    /^sqlite:\/\//: {
+      fail('Sahara does not support sqlite!')
+    }
+    default: {
+      fail('Unsupported db backend configured')
+    }
+  }
+
   sahara_config {
     'DEFAULT/use_neutron': value => $use_neutron;
     'DEFAULT/host': value => $service_host;
@@ -111,5 +126,15 @@ class sahara(
     'keystone_authtoken/admin_password':
       value => $os_password,
       secret => true;
+  }
+
+  Sahara_config<||> -> Exec['sahara-dbmanage']
+
+  exec { 'sahara-dbmanage':
+    command => $::sahara::params::dbmanage_command,
+    path => '/usr/bin',
+    user => 'root',
+    refreshonly => true,
+    logoutput => on_failure,
   }
 }

@@ -43,6 +43,12 @@ recommend you consult and understand the
 [core of openstack](http://docs.openstack.org) documentation.
 
 ```puppet
+# first, create a database
+class { 'sahara::db::mysql':
+  password => 'a_big_secret',
+}
+
+# Then the common class
 class { 'sahara':
   database_connection => 'mysql://sahara:a_big_secret@127.0.0.1:3306/sahara',
   verbose => true,
