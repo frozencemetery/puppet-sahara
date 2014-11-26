@@ -6,6 +6,7 @@ class { 'mysql::server':
       'max_allowed_packet' => '256M'
     }
   },
+  restart => true,
 
   # many configurations will need this line, too
   package_name => 'mariadb-galera-server',
