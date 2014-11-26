@@ -17,7 +17,7 @@ sahara
 Overview
 --------
 
-- [ ] TODO
+TODO
 
 Module Description
 ------------------
@@ -34,7 +34,7 @@ Setup
 
 ### Installing sahara
 
-- [ ] TODO
+TODO
 
 ### Beginning with sahara
 
@@ -61,12 +61,22 @@ Batman has no limits.
 Development
 -----------
 
-- [ ] TODO
+TODO
 
 Contributors
 ------------
 
-- [ ] TODO
+- Robbie Harwood <rharwood@redhat.com>
+
+TODOs
+-----
+
+- [ ] Finish fleshing out this file
+- [ ] rabbit configuration handles
+- [ ] logging handles
+- stretch goals
+  - [ ] non-rabbit messaging handles
+  - [ ] plugins
 
 Release Notes
 -------------
