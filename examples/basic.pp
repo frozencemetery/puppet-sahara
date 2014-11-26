@@ -1,15 +1,18 @@
 # First, install a mysql server
 class { 'mysql::server':
-  # sahara documentation recommends this configuration
+  # sahara documentation recommends this configuration.
   override_options => {
     'mysqld' => {
       'max_allowed_packet' => '256M'
     }
   },
-  restart => true,
 
   # many configurations will need this line, too
   package_name => 'mariadb-galera-server',
+
+  # if you're installing into an existing openstack
+  manage_config_file => false,
+  purge_conf_dir => false,
 }
 
 # Then, create a database
