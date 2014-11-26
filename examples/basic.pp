@@ -1,5 +1,12 @@
 # First, install a mysql server
 class { 'mysql::server':
+  # sahara documentation recommends this configuration
+  override_options => {
+    'mysqld' => {
+      'max_allowed_packet' => '256M'
+    }
+  },
+
   # many configurations will need this line, too
   package_name => 'mariadb-galera-server',
 }
