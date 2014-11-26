@@ -34,3 +34,6 @@ class { 'sahara':
   service_port => 8386,
   use_neutron => true,
 }
+
+# Finally, make it accessible
+class { 'sahara::keystone::auth': }
