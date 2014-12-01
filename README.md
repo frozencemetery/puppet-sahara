@@ -78,19 +78,14 @@ Contributors
 TODOs
 -----
 
-- [ ] Finish fleshing out this file
-- [ ] RHEL support
-
-### Stretch Goals
-
-- [ ] Ømq messaging handles
-- [ ] plugins
-- [ ] test qpid handles
 - [ ] qpid+rabbit ssl
-- [ ] qpid+rabbit multi-host
+- [ ] test qpid handles
 - [ ] postgres &co. support
 - [ ] Debian+Ubuntu support
 - [ ] nova network support
+- [ ] el6 support
+- [ ] qpid+rabbit multi-host
+- [ ] Ømq messaging handles
 - [ ] logging handles
 
 Release Notes
