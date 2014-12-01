@@ -72,11 +72,13 @@ TODOs
 -----
 
 - [ ] Finish fleshing out this file
-- [ ] rabbit configuration handles
 - [ ] logging handles
 - stretch goals
   - [ ] non-rabbit messaging handles
   - [ ] plugins
+  - [ ] rabbit ssl
+  - [ ] rabbit multi-host
+  - [ ] postgres support
 
 Release Notes
 -------------
