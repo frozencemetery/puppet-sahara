@@ -23,7 +23,7 @@ class { 'sahara::db::mysql':
 # And connect a message bus
 class { 'sahara::notify::rabbitmq':
   rabbit_password => 'guest',
-  rabbit_use_ssl = false,
+  rabbit_use_ssl => false,
 }
 
 # Then the common class
