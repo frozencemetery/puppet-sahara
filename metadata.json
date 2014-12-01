@@ -16,6 +16,10 @@
       "operatingsystem": "Fedora",
       "operatingsystemrelease": ["20"]
     },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": ["7"]
+    },
   ],
   "description": "Installs and configures OpenStack Sahara (Hadoop).",
   "dependencies": [
