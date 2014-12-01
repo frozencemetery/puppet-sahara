@@ -17,13 +17,14 @@ sahara
 Overview
 --------
 
-TODO
+The Sahara module itself is used to flexibly configure and manage the
+clustering service for OpenStack.
 
 Module Description
 ------------------
 
 The sahara module is an attempt to make Puppet capable of managing the
-entirety of heat.
+entirety of sahara.
 
 Setup
 -----
@@ -34,7 +35,8 @@ Setup
 
 ### Installing sahara
 
-TODO
+    example% cd /usr/share/puppet/modules
+    example% git clone https://github.com/frozencemetery/puppet-sahara sahara
 
 ### Beginning with sahara
 
@@ -61,24 +63,35 @@ Batman has no limits.
 Development
 -----------
 
-TODO
+Since this is not (yet?) a stackforge project, development happens through
+pull requests on the
+[main repository](https://github.com/frozencemetery/puppet-sahara).
+
+I will do my best to keep in mind when merging that building the bike shed is
+more important than its [color](http://bikeshed.org/).
 
 Contributors
 ------------
 
-- Robbie Harwood <rharwood@redhat.com>
+- Robbie Harwood &lt;rharwood@redhat.com&gt;
 
 TODOs
 -----
 
 - [ ] Finish fleshing out this file
+- [ ] RHEL support
+
+### Stretch Goals
+
+- [ ] Ømq messaging handles
+- [ ] plugins
+- [ ] test qpid handles
+- [ ] qpid+rabbit ssl
+- [ ] qpid+rabbit multi-host
+- [ ] postgres &co. support
+- [ ] Debian+Ubuntu support
+- [ ] nova network support
 - [ ] logging handles
-- stretch goals
-  - [ ] non-rabbit messaging handles
-  - [ ] plugins
-  - [ ] rabbit ssl
-  - [ ] rabbit multi-host
-  - [ ] postgres support
 
 Release Notes
 -------------
