@@ -78,8 +78,8 @@ Contributors
 TODOs
 -----
 
-- [ ] qpid+rabbit ssl
 - [ ] test qpid handles
+- [ ] test qpid+rabbit ssl configurations
 - [ ] postgres &co. support
 - [ ] Debian+Ubuntu support
 - [ ] nova network support
