@@ -14,7 +14,7 @@
 #   Defaults to 'sahara'.
 #
 # [*user*]
-#   (Optional) User to connect to the dataase.
+#   (Optional) User to connect to the database.
 #   Defaults to 'sahara'.
 #
 # [*host*]
@@ -33,6 +33,7 @@
 #   (Optional) The database collate.
 #   Only used with mysql modules >= 2.2.
 #    Defaults to 'utf8_unicode_ci'.
+#
 class sahara::db::mysql(
   $password = false,
   $dbname = 'sahara',
