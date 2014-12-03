@@ -78,9 +78,14 @@ Contributors
 TODOs
 -----
 
+### Testing
+
 - [ ] test qpid handles
 - [ ] test qpid+rabbit ssl configurations
-- [ ] postgres &co. support
+- [ ] test postgres support
+
+### Coding
+
 - [ ] Debian+Ubuntu support
 - [ ] nova network support
 - [ ] el6 support
