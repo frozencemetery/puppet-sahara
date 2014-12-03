@@ -32,9 +32,9 @@
 #   (Optional) Seconds between connection keepalive heartbeats.
 #   Defaults to 60.
 #
-# [*qpid_use_ssl*]
-#   (Optional) Whether to use SSL.  (False => TCP)
-#   Defaults to false.
+# [*qpid_protocol*]
+#   (Optional) Protocol to use for qpid (tcp/ssl).
+#   Defaults to tcp.
 #
 # [*qpid_tcp_nodelay*]
 #   (Optional) Whether to disable the Nagle algorithm.
@@ -64,20 +64,13 @@ class sahara::notify::rabbit(
   $qpid_password = 'guest',
   $qpid_sasl_mechanisms = '',
   $qpid_heartbeat = 60,
-  $qpid_use_ssl = false,
+  $qpid_protocol = 'tcp',
   $qpid_tcp_nodelay = true,
   $qpid_receiver_capacity = 1,
   $qpid_topology_version = 2,
   $notification_topics = 'notifications',
   $control_exchange = 'openstack',
 ) {
-  if $qpid_use_ssl {
-    $qpid_protocol = 'ssl'
-    fail('SSL configuration of message broker is not yet supported!')
-  } else {
-    $qpid_protocol = 'tcp'
-  }
-  
   sahara_config {
     'DEFAULT/rpc_backend': value => 'qpid';
     'DEFAULT/qpid_hosts': value => '$qpid_hostname:$qpid_port';
