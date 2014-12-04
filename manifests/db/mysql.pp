@@ -43,15 +43,16 @@ class sahara::db::mysql(
   $charset = 'utf8',
   $collate = 'utf8_unicode_ci',
 ) {
+
   validate_string($password)
 
   ::openstacklib::db::mysql{ 'sahara':
-    user => $user,
+    user          => $user,
     password_hash => mysql_password($password),
-    dbname => $dbname,
-    host => $host,
-    charset => $charset,
-    collate => $collate,
+    dbname        => $dbname,
+    host          => $host,
+    charset       => $charset,
+    collate       => $collate,
     allowed_hosts => $allowed_hosts,
   }
 

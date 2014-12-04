@@ -54,7 +54,6 @@
 #   (Optional) Admin identity endpoint
 #   Defaults to 'http://127.0.0.1:35357/'
 #
-
 class sahara(
   $package_ensure =      'present',
   $verbose =             false,
@@ -72,29 +71,29 @@ class sahara(
   include sahara::params
 
   file { '/etc/sahara/':
-    ensure => directory,
-    owner => 'root',
-    group => 'sahara',
-    mode => '0750',
+    ensure  => directory,
+    owner   => 'root',
+    group   => 'sahara',
+    mode    => '0750',
     require => Package['sahara'],
   }
 
   file { '/etc/sahara/sahara.conf':
-    owner => 'root',
-    group => 'sahara',
-    mode => '0640',
+    owner   => 'root',
+    group   => 'sahara',
+    mode    => '0640',
     require => File['/etc/sahara'],
   }
-  
+
   package { 'sahara':
     ensure => $package_ensure,
-    name => $::sahara::params::package_name,
+    name   => $::sahara::params::package_name,
   }
 
   Package['sahara'] -> Sahara_config<||>
 
-  validate_re($database_connection,
-    '(sqlite|mysql):\/\/(\S+:\S+@\S+\/\S+)?')
+  validate_re($database_connection,'(sqlite|mysql):\/\/(\S+:\S+@\S+\/\S+)?')
+
   case $database_connection {
     /^mysql:\/\//: {
       require mysql::bindings
@@ -114,7 +113,7 @@ class sahara(
     'DEFAULT/port': value => $service_port;
     'DEFAULT/debug': value => $debug;
     'DEFAULT/verbose': value => $verbose;
-    
+
     'database/connection':
       value => $database_connection,
       secret => true;
@@ -131,10 +130,10 @@ class sahara(
   Sahara_config<||> ~> Exec['sahara-dbmanage']
 
   exec { 'sahara-dbmanage':
-    command => $::sahara::params::dbmanage_command,
-    path => '/usr/bin',
-    user => 'root',
+    command     => $::sahara::params::dbmanage_command,
+    path        => '/usr/bin',
+    user        => 'root',
     refreshonly => true,
-    logoutput => on_failure,
+    logoutput   => on_failure,
   }
 }
