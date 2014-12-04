@@ -73,23 +73,23 @@
 #   Defaults to '1.0'; floating-point value.
 #
 class sahara::notify::qpid(
-  $durable_queues = false,
-  $qpid_hostname = 'localhost',
-  $qpid_port = 5672,
-  $qpid_username = 'guest',
-  $qpid_password = 'guest',
-  $qpid_sasl_mechanisms = '',
-  $qpid_heartbeat = 60,
-  $qpid_protocol = 'tcp',
-  $qpid_tcp_nodelay = true,
+  $durable_queues         = false,
+  $qpid_hostname          = 'localhost',
+  $qpid_port              = 5672,
+  $qpid_username          = 'guest',
+  $qpid_password          = 'guest',
+  $qpid_sasl_mechanisms   = '',
+  $qpid_heartbeat         = 60,
+  $qpid_protocol          = 'tcp',
+  $qpid_tcp_nodelay       = true,
   $qpid_receiver_capacity = 1,
-  $qpid_topology_version = 2,
-  $notification_topics = 'notifications',
-  $control_exchange = 'openstack',
-  $kombu_ssl_keyfile = undef,
-  $kombu_ssl_certfile = undef,
-  $kombu_ssl_ca_certs = undef,
-  $kombu_reconnect_delay = '1.0',
+  $qpid_topology_version  = 2,
+  $notification_topics    = 'notifications',
+  $control_exchange       = 'openstack',
+  $kombu_ssl_keyfile      = undef,
+  $kombu_ssl_certfile     = undef,
+  $kombu_ssl_ca_certs     = undef,
+  $kombu_reconnect_delay  = '1.0',
 ) {
   if $qpid_protocol == 'ssl' {
     if !$kombu_ssl_keyfile {
@@ -105,7 +105,7 @@ class sahara::notify::qpid(
       'DEFAULT/kombu_ssl_version': value => 'TLSv1';
       'DEFAULT/kombu_ssl_keyfile': value => $kombu_ssl_keyfile;
       'DEFAULT/kombu_ssl_certfile': value => $kombu_ssl_certfile;
-      'DEFAULT/kombu_ssl_ca_certs': value    => $kombu_ssl_ca_certs;
+      'DEFAULT/kombu_ssl_ca_certs': value => $kombu_ssl_ca_certs;
       'DEFAULT/kombu_reconnect_delay': value => $kombu_reconnect_delay;
     }
   } elsif $qpid_protocol == 'tcp' {

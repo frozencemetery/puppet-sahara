@@ -35,13 +35,13 @@
 #    Defaults to 'utf8_unicode_ci'.
 #
 class sahara::db::mysql(
-  $password = false,
-  $dbname = 'sahara',
-  $user = 'sahara',
-  $host = '127.0.0.1',
+  $password,
+  $dbname        = 'sahara',
+  $user          = 'sahara',
+  $host          = '127.0.0.1',
   $allowed_hosts = undef,
-  $charset = 'utf8',
-  $collate = 'utf8_unicode_ci',
+  $charset       = 'utf8',
+  $collate       = 'utf8_unicode_ci',
 ) {
 
   validate_string($password)
