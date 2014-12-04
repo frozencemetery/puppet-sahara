@@ -87,8 +87,6 @@ TODOs
 ### Coding
 
 - [ ] nova network support
-- [ ] el6 support
-- [ ] qpid+rabbit multi-host
 - [ ] Ømq messaging handles
 - [ ] logging handles
 
