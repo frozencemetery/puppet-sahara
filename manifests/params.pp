@@ -3,19 +3,18 @@
 # Parameters for puppet-sahara
 #
 class sahara::params {
-  $dbmanage_command =
-    'sahara-db-manage --config-file /etc/sahara/sahara.conf upgrade head'
+  $dbmanage_command    = 'sahara-db-manage --config-file /etc/sahara/sahara.conf upgrade head'
+  $client_package_name = 'python-saharaclient'
+
   case $::osfamily {
     'RedHat': {
       $package_name = 'openstack-sahara'
-      $client_package_name = 'python-saharaclient'
       $service_name = 'openstack-sahara-all'
     }
     'Debian': {
       case $::operatingsystem {
         'Debian': {
           $package_name = 'sahara'
-          $client_package_name = 'python-saharaclient'
           $service_name = 'sahara'
         }
         default: {
@@ -26,9 +25,7 @@ class sahara::params {
       }
     }
     default: {
-      fail("Unsupported osfamily: ${::osfamily} operatingsystem: \
-      ${::operatingsystem}; module ${module_name} does not (yet!) support \
-      non-RedHat osfamily")
+      fail("Unsupported osfamily: ${::osfamily} operatingsystem: ${::operatingsystem}")
     }
   }
 }

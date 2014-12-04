@@ -8,6 +8,14 @@
 #   (Optional) Ensure state for package
 #   Defaults to 'present'
 #
+#  [*manage_service*]
+#    (optional) Whether the service should be managed by Puppet.
+#    Defaults to true.
+#
+#  [*enabled*]
+#    (optional) Should the service be enabled.
+#    Defaults to true
+#
 # [*verbose*]
 #   (Optional) Should the daemons log verbose messages
 #   Defaults to 'false'
@@ -54,47 +62,49 @@
 #   (Optional) Admin identity endpoint
 #   Defaults to 'http://127.0.0.1:35357/'
 #
-
 class sahara(
-  $package_ensure =      'present',
-  $verbose =             false,
-  $debug =               false,
-  $service_host =        '127.0.0.1',
-  $service_port =        8386,
-  $use_neutron =         true,
+  $manage_service      = true,
+  $enabled             = true,
+  $package_ensure      = 'present',
+  $verbose             = false,
+  $debug               = false,
+  $service_host        = '127.0.0.1',
+  $service_port        = 8386,
+  $use_neutron         = true,
   $database_connection = 'mysql://sahara:secrete@localhost:3306/sahara',
-  $os_username =         'admin',
-  $os_password =         'secrete',
-  $os_tenant_name =      'admin',
-  $os_auth_url =         'http://127.0.0.1:5000/v2.0/',
-  $identity_url =        'http://127.0.0.1:35357/',
+  $os_username         = 'admin',
+  $os_password         = 'secrete',
+  $os_tenant_name      = 'admin',
+  $os_auth_url         = 'http://127.0.0.1:5000/v2.0/',
+  $identity_url        = 'http://127.0.0.1:35357/',
 ) {
   include sahara::params
 
   file { '/etc/sahara/':
-    ensure => directory,
-    owner => 'root',
-    group => 'sahara',
-    mode => '0750',
+    ensure  => directory,
+    owner   => 'root',
+    group   => 'sahara',
+    mode    => '0750',
     require => Package['sahara'],
   }
 
   file { '/etc/sahara/sahara.conf':
-    owner => 'root',
-    group => 'sahara',
-    mode => '0640',
+    owner   => 'root',
+    group   => 'sahara',
+    mode    => '0640',
     require => File['/etc/sahara'],
   }
-  
+
   package { 'sahara':
     ensure => $package_ensure,
-    name => $::sahara::params::package_name,
+    name   => $::sahara::params::package_name,
   }
 
   Package['sahara'] -> Sahara_config<||>
+  Package['sahara'] ~> Service['sahara']
 
-  validate_re($database_connection,
-    '(sqlite|mysql):\/\/(\S+:\S+@\S+\/\S+)?')
+  validate_re($database_connection,'(sqlite|mysql):\/\/(\S+:\S+@\S+\/\S+)?')
+
   case $database_connection {
     /^mysql:\/\//: {
       require mysql::bindings
@@ -114,7 +124,7 @@ class sahara(
     'DEFAULT/port': value => $service_port;
     'DEFAULT/debug': value => $debug;
     'DEFAULT/verbose': value => $verbose;
-    
+
     'database/connection':
       value => $database_connection,
       secret => true;
@@ -128,13 +138,32 @@ class sahara(
       secret => true;
   }
 
+  if $manage_service {
+    if $enabled {
+      $service_ensure = 'running'
+    } else {
+      $service_ensure = 'stopped'
+    }
+  }
+
+  Package['sahara'] -> Service['sahara']
+  service { 'sahara':
+    ensure     => $service_ensure,
+    name       => $::sahara::params::service_name,
+    hasstatus  => true,
+    enable     => $enabled,
+    hasrestart => true,
+    subscribe  => Exec['sahara-dbmanage'],
+  }
+
   Sahara_config<||> ~> Exec['sahara-dbmanage']
 
   exec { 'sahara-dbmanage':
-    command => $::sahara::params::dbmanage_command,
-    path => '/usr/bin',
-    user => 'root',
+    command     => $::sahara::params::dbmanage_command,
+    path        => '/usr/bin',
+    user        => 'root',
     refreshonly => true,
-    logoutput => on_failure,
+    logoutput   => on_failure,
   }
+
 }
