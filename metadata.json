@@ -13,6 +13,10 @@
   ],
   "operatingsystem_support": [
     {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": ["8"]
+    },
+    {
       "operatingsystem": "Fedora",
       "operatingsystemrelease": ["20"]
     },
