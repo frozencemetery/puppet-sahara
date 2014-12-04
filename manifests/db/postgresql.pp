@@ -18,9 +18,9 @@
 #   Defaults to 'sahara'.
 #
 class sahara::db::postgresql (
-  $password = false,
+  $password,
   $dbname = 'sahara',
-  $user = 'sahara',
+  $user   = 'sahara',
 ) {
 
   require postgresql::lib::python
