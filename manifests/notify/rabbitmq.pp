@@ -16,6 +16,12 @@
 #   (Optional) Port of the rabbit server.
 #   Defaults to 5672.
 #
+# [*rabbit_hosts*]
+#   (Optional) IP or hostname of the rabbits servers.
+#   coma separated array (ex: ['1.0.0.10:5672','1.0.0.11:5672'])
+#   Defaults to false.
+#
+#
 # [*rabbit_use_ssl*]
 #   (Optional) Connect over SSL for RabbitMQ.
 #   Defaults to false.
