@@ -72,7 +72,7 @@
 #   (Optional) Backoff on cancel notification (valid only if SSL enabled).
 #   Defaults to '1.0'; floating-point value.
 #
-class sahara::notify::rabbit(
+class sahara::notify::qpid(
   $durable_queues = false,
   $qpid_hostname = 'localhost',
   $qpid_port = 5672,
