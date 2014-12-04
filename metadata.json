@@ -1,7 +1,7 @@
 {
   "name": "stackforge-sahara",
-  "version": "5.0.0"
-  "author": "Robbie Harwood, StackForge Contributors, and Puppet Labs"
+  "version": "5.0.0",
+  "author": "Robbie Harwood, StackForge Contributors, and Puppet Labs",
   "summary": "Puppet module for OpenStack Sahara",
   "license": "Apache License 2.0",
   "source": "git://github.com/frozencemetery/puppet-sahara.git",
@@ -14,16 +14,16 @@
   "operatingsystem_support": [
     {
       "operatingsystem": "Fedora",
-      "operatingsystemrelease": ["20"],
+      "operatingsystemrelease": ["20"]
     },
     {
       "operatingsystem": "RedHat",
-      "operatingsystemrelease": ["7"],
+      "operatingsystemrelease": ["7"]
     },
     {
       "operatingsystem": "Debian",
-      "operatingsystemrelease": ["8"],
-    },
+      "operatingsystemrelease": ["8"]
+    }
   ],
   "description": "Installs and configures OpenStack Sahara (Hadoop).",
   "dependencies": [
@@ -31,7 +31,7 @@
     { "name": "stackforge/keystone", "version_requirement": ">=5.0.0 <6.0.0" },
     { "name": "puppetlabs/inifile", "version_requirement": ">=5.0.0 <6.0.0" },
     { "name": "puppetlabs/stdlib", "version_requirement": ">=4.0.0 <5.0.0" },
-    { "name": "stackforge/openstacklib", "version_requirement": ">=5.0.0" },
     { "name": "puppetlabs/postgresql", "version_requirement": ">=3.0.0" },
-  ],
+    { "name": "stackforge/openstacklib", "version_requirement": ">=5.0.0" }
+  ]
 }
