@@ -8,6 +8,14 @@
 #   (Optional) Ensure state for package
 #   Defaults to 'present'
 #
+#  [*manage_service*]
+#    (optional) Whether the service should be managed by Puppet.
+#    Defaults to true.
+#
+#  [*enabled*]
+#    (optional) Should the service be enabled.
+#    Defaults to true
+#
 # [*verbose*]
 #   (Optional) Should the daemons log verbose messages
 #   Defaults to 'false'
@@ -55,6 +63,8 @@
 #   Defaults to 'http://127.0.0.1:35357/'
 #
 class sahara(
+  $manage_service      = true,
+  $enabled             = true,
   $package_ensure =      'present',
   $verbose =             false,
   $debug =               false,
@@ -127,6 +137,24 @@ class sahara(
       secret => true;
   }
 
+  if $manage_service {
+    if $enabled {
+      $service_ensure = 'running'
+    } else {
+      $service_ensure = 'stopped'
+    }
+  }
+
+  Package['sahara'] -> Service['sahara']
+  service { 'sahara':
+    ensure     => $service_ensure,
+    name       => $::sahara::params::service_name,
+    hasstatus  => true,
+    enable     => $enabled,
+    hasrestart => true,
+    subscribe  => Exec['sahara-dbmanage'],
+  }
+
   Sahara_config<||> ~> Exec['sahara-dbmanage']
 
   exec { 'sahara-dbmanage':
@@ -136,4 +164,5 @@ class sahara(
     refreshonly => true,
     logoutput   => on_failure,
   }
+
 }
