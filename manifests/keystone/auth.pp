@@ -75,17 +75,17 @@ class sahara::keystone::auth(
   } else {
     $real_service_name = $service_name
   }
-  
+
   keystone_service { $real_service_name:
-    ensure => present,
-    type => $service_type,
-    description => $service_description,    
+    ensure      => present,
+    type        => $service_type,
+    description => $service_description,
   }
 
   keystone_endpoint { "${region}/${real_service_name}":
-    ensure => present,
-    public_url => "${public_protocol}://${public_address}:${port}/${version}/%(tenant_id)s",
-    admin_url => "${admin_protocol}://${admin_address}:${port}/${version}/%(tenant_id)s",
+    ensure       => present,
+    public_url   => "${public_protocol}://${public_address}:${port}/${version}/%(tenant_id)s",
+    admin_url    => "${admin_protocol}://${admin_address}:${port}/${version}/%(tenant_id)s",
     internal_url => "${internal_protocol}://${internal_address}:${port}/${version}/%(tenant_id)s",
   }
 }

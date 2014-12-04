@@ -26,7 +26,7 @@ class sahara::db::postgresql (
   validate_string($password)
 
   postgresql::server::db { $dbname:
-    user => $user,
+    user     => $user,
     password => postgresql_password($user, $password),
   }
 
