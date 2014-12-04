@@ -1,7 +1,7 @@
 {
   "name": "stackforge-sahara",
   "version": "5.0.0",
-  "author": "Robbie Harwood, StackForge Contributors, and Puppet Labs",
+  "author": "Red Hat and StackForge Contributors",
   "summary": "Puppet module for OpenStack Sahara",
   "license": "Apache License 2.0",
   "source": "git://github.com/frozencemetery/puppet-sahara.git",
