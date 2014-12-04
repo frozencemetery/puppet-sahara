@@ -101,6 +101,7 @@ class sahara(
   }
 
   Package['sahara'] -> Sahara_config<||>
+  Package['sahara'] ~> Service['sahara']
 
   validate_re($database_connection,'(sqlite|mysql):\/\/(\S+:\S+@\S+\/\S+)?')
 
