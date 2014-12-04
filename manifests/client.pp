@@ -13,7 +13,7 @@ class sahara::client (
   include sahara::params
 
   package { 'saharaclient':
-    ensure => $package_ensure,
-    name => $::sahara::params::client_package_name,  
+    ensure => $ensure,
+    name   => $::sahara::params::client_package_name,
   }
 }
