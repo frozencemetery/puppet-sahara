@@ -68,6 +68,10 @@
 #   (Optional) SSL cert file (valid only if SSL enabled).
 #   Defaults to undef.
 #
+# [*kombu_ssl_ca_certs*]
+#   (optional) SSL certification authority file (valid only if SSL enabled).
+#   Defaults to undef
+#
 # [*kombu_reconnect_delay*]
 #   (Optional) Backoff on cancel notification (valid only if SSL enabled).
 #   Defaults to '1.0'; floating-point value.
@@ -99,13 +103,14 @@ class sahara::notify::rabbitmq(
     if !$kombu_ssl_certfile {
       fail('kombu_ssl_certfile must be set when using SSL in rabbit')
     }
-    if !$kombu_ca_certs {
-      fail('kombu_ca_certs must be set when using SSL in rabbit')
+    if !$kombu_ssl_ca_certs {
+      fail('kombu_ssl_ca_certs must be set when using SSL in rabbit')
     }
     sahara_config {
       'DEFAULT/kombu_ssl_version': value => 'TLSv1';
       'DEFAULT/kombu_ssl_keyfile': value => $kombu_ssl_keyfile;
       'DEFAULT/kombu_ssl_certfile': value => $kombu_ssl_certfile;
+      'DEFAULT/kombu_ssl_ca_certs': value => $kombu_ssl_ca_certs;
       'DEFAULT/kombu_reconnect_delay': value => $kombu_reconnect_delay;
     }
   } else {
@@ -113,6 +118,7 @@ class sahara::notify::rabbitmq(
       'DEFAULT/kombu_ssl_version': ensure => absent;
       'DEFAULT/kombu_ssl_keyfile': ensure => absent;
       'DEFAULT/kombu_ssl_certfile': ensure => absent;
+      'DEFAULT/kombu_ssl_ca_certs': ensure => absent;
       'DEFAULT/kombu_reconnect_delay': ensure => absent;
     }
   }
