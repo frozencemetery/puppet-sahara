@@ -86,7 +86,6 @@ TODOs
 
 ### Coding
 
-- [ ] Debian+Ubuntu support
 - [ ] nova network support
 - [ ] el6 support
 - [ ] qpid+rabbit multi-host
