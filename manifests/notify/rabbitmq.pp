@@ -134,8 +134,10 @@ class sahara::notify::rabbitmq(
     sahara_config {
       'DEFAULT/rabbit_host':      value => $rabbit_host;
       'DEFAULT/rabbit_port':      value => $rabbit_port;
-      'DEFAULT/rabbit_hosts':     value => '$rabbit_host:$rabbit_port';
       'DEFAULT/rabbit_ha_queues': value => false
+
+      # single-quotes to get literal dollar signs
+      'DEFAULT/rabbit_hosts':     value => '$rabbit_host:$rabbit_port';
     }
   }
 
