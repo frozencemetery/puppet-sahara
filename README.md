@@ -80,10 +80,6 @@ TODOs
 
 ### Testing
 
-- [ ] test qpid handles
-- [ ] test qpid+rabbit ssl configurations
-- [ ] test postgres support
-
 ### Coding
 
 - [ ] nova network support
