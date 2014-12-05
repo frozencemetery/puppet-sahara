@@ -18,18 +18,19 @@
 #   Defaults to 'sahara'.
 #
 class sahara::db::postgresql (
-  $password = false,
+  $password,
   $dbname = 'sahara',
-  $user = 'sahara',
+  $user   = 'sahara',
 ) {
-  require postgresql::python
+
+  require postgresql::lib::python
   validate_string($password)
 
   postgresql::server::db { $dbname:
-    user => $user,
+    user     => $user,
     password => postgresql_password($user, $password),
   }
 
-  PostgreSQL::Db[$dbname] ~> Exec<| title == 'sahara-dbmanage' |>
+  PostgreSQL::Server::Db[$dbname] ~> Exec<| title == 'sahara-dbmanage' |>
   Package['python-psycopg2'] -> Exec<| title == 'sahara-dbmanage' |>
 }

@@ -4,16 +4,18 @@
 #
 # === Parameters
 #
-# [*ensure*]
+# [*package_ensure*]
 #   (Optional) Ensure state for package.
+#   Default: present
 #
 class sahara::client (
-  $ensure = 'present'
+  $package_ensure = 'present'
 ) {
+
   include sahara::params
 
-  package { 'saharaclient':
+  package { 'python-saharaclient':
     ensure => $package_ensure,
-    name => $::sahara::params::client_package_name,  
+    name   => $::sahara::params::client_package_name,
   }
 }
