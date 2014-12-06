@@ -76,16 +76,6 @@ Contributors
 - Robbie Harwood &lt;rharwood@redhat.com&gt;
 - Sebastien Badia &lt;sbadia@redhat.com&gt;
 
-TODOs
------
-
-### Testing
-
-### Coding
-
-- [ ] nova network support
-- [ ] logging handles
-
 Release Notes
 -------------
 
