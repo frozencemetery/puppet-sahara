@@ -84,7 +84,6 @@ TODOs
 ### Coding
 
 - [ ] nova network support
-- [ ] Ømq messaging handles
 - [ ] logging handles
 
 Release Notes
