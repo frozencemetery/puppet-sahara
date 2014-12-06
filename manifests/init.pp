@@ -103,12 +103,15 @@ class sahara(
   Package['sahara'] -> Sahara_config<||>
   Package['sahara'] ~> Service['sahara']
 
-  validate_re($database_connection,'(sqlite|mysql):\/\/(\S+:\S+@\S+\/\S+)?')
+  validate_re($database_connection, '(sqlite|mysql|postgresql):\/\/(\S+:\S+@\S+\/\S+)?')
 
   case $database_connection {
     /^mysql:\/\//: {
       require mysql::bindings
       require mysql::bindings::python
+    }
+    /^postgresql:\/\//: {
+      require postgresql::lib::python
     }
     /^sqlite:\/\//: {
       fail('Sahara does not support sqlite!')
