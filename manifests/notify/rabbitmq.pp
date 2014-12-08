@@ -70,7 +70,7 @@
 #   Defaults to undef.
 #
 # [*kombu_ssl_ca_certs*]
-#   (Pptional) SSL certification authority file (valid only if SSL enabled).
+#   (Optional) SSL certification authority file (valid only if SSL enabled).
 #   Defaults to undef
 #
 # [*kombu_reconnect_delay*]
