@@ -61,7 +61,7 @@ class sahara::notify::zeromq(
   $kombu_ssl_ca_certs     = undef,
   $kombu_reconnect_delay  = '1.0',
 ) {
-  if $kombu_ssl_keyfile or $kombu_ssl_cerfile or $kombu_ssl_ca_certs or $kombu_reconnect_delay {
+  if $kombu_ssl_keyfile or $kombu_ssl_certfile or $kombu_ssl_ca_certs or $kombu_reconnect_delay {
     if !$kombu_ssl_keyfile {
       fail('kombu_ssl_keyfile must be set when using SSL in zeromq')
     }
