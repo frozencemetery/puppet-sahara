@@ -13,7 +13,10 @@ describe 'sahara' do
 
   context 'on Debian platforms' do
     let :facts do
-      { :osfamily => 'Debian' }
+      {
+        :osfamily => 'Debian',
+        :operatingsystem => 'Debian'
+      }
     end
 
     it_configures 'sahara'

@@ -47,7 +47,6 @@ describe 'sahara::notify::rabbitmq' do
         :kombu_ssl_ca_certs => '/etc/ca.cert',
         :kombu_ssl_certfile => '/etc/certfile',
         :kombu_ssl_keyfile  => '/etc/key',
-        :kombu_ssl_version  => 'TLSv1',
       }
     end
 
@@ -65,8 +64,7 @@ describe 'sahara::notify::rabbitmq' do
         :rabbit_use_ssl     => false,
         :kombu_ssl_ca_certs => 'undef',
         :kombu_ssl_certfile => 'undef',
-        :kombu_ssl_keyfile  => 'undef',
-        :kombu_ssl_version  => 'TLSv1',
+        :kombu_ssl_keyfile  => 'undef'
       }
     end
 

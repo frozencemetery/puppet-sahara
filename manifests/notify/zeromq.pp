@@ -48,7 +48,7 @@
 #   (Optional) Backoff on cancel notification (valid only if SSL enabled).
 #   Defaults to '1.0'; floating-point value.
 #
-class sahara::notify::qpid(
+class sahara::notify::zeromq(
   $zeromq_bind_address    = '*',
   $zeromq_port            = 9501,
   $zeromq_contexts        = 1,
