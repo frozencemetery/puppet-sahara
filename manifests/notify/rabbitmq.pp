@@ -18,9 +18,8 @@
 #
 # [*rabbit_hosts*]
 #   (Optional) IP or hostname of the rabbits servers.
-#   coma separated array (ex: ['1.0.0.10:5672','1.0.0.11:5672'])
+#   comma separated array (ex: ['1.0.0.10:5672','1.0.0.11:5672'])
 #   Defaults to false.
-#
 #
 # [*rabbit_use_ssl*]
 #   (Optional) Connect over SSL for RabbitMQ.
@@ -71,7 +70,7 @@
 #   Defaults to undef.
 #
 # [*kombu_ssl_ca_certs*]
-#   (optional) SSL certification authority file (valid only if SSL enabled).
+#   (Pptional) SSL certification authority file (valid only if SSL enabled).
 #   Defaults to undef
 #
 # [*kombu_reconnect_delay*]

@@ -6,61 +6,61 @@
 #
 # [*package_ensure*]
 #   (Optional) Ensure state for package
-#   Defaults to 'present'
+#   Defaults to 'present'.
 #
-#  [*manage_service*]
-#    (optional) Whether the service should be managed by Puppet.
-#    Defaults to true.
+# [*manage_service*]
+#   (optional) Whether the service should be managed by Puppet.
+#   Defaults to true.
 #
-#  [*enabled*]
-#    (optional) Should the service be enabled.
-#    Defaults to true
+# [*enabled*]
+#   (optional) Should the service be enabled.
+#   Defaults to true.
 #
 # [*verbose*]
 #   (Optional) Should the daemons log verbose messages
-#   Defaults to 'false'
+#   Defaults to 'false'.
 #
 # [*debug*]
 #   (Optional) Should the daemons log debug messages
-#   Defaults to 'false'
+#   Defaults to 'false'.
 #
 # [*service_host*]
 #   (Optional) Hostname for sahara to listen on
-#   Defaults to '127.0.0.1'
+#   Defaults to '127.0.0.1'.
 #
 # [*service_port*]
 #   (Optional) Port for sahara to listen on
-#   Defaults to 8386
+#   Defaults to 8386.
 #
 # [*use_neutron*]
 #   (Optional) Whether to use neutron
-#   Defaults to true
+#   Defaults to true.
 #
 # [*database_connection*]
 #   (Optional) Non-sqllite database for sahara
-#   Defaults to mysql://sahara:secrete@localhost:3306/sahara
+#   Defaults to 'mysql://sahara:secrete@localhost:3306/sahara'.
 #
 # == keystone authentication options
 #
 # [*os_username*]
 #   (Optional) Username for sahara credentials
-#   Defaults to 'admin'
+#   Defaults to 'admin'.
 #
 # [*os_password*]
 #   (Optional) Password for sahara credentials
-#   Defaults to 'secrete'
+#   Defaults to 'secrete'.
 #
 # [*os_tenant_name*]
 #   (Optional) Tenant for os_username
-#   Defaults to 'admin'
+#   Defaults to 'admin'.
 #
 # [*os_auth_url*]
 #   (Optional) Public identity endpoint
-#   Defaults to 'http://127.0.0.1:5000/v2.0/'
+#   Defaults to 'http://127.0.0.1:5000/v2.0/'.
 #
 # [*identity_url*]
 #   (Optional) Admin identity endpoint
-#   Defaults to 'http://127.0.0.1:35357/'
+#   Defaults to 'http://127.0.0.1:35357/'.
 #
 class sahara(
   $manage_service      = true,

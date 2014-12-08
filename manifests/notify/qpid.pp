@@ -66,7 +66,7 @@
 #
 # [*kombu_ssl_ca_certs*]
 #   (optional) SSL certification authority file (valid only if SSL enabled).
-#   Defaults to undef
+#   Defaults to undef.
 #
 # [*kombu_reconnect_delay*]
 #   (Optional) Backoff on cancel notification (valid only if SSL enabled).

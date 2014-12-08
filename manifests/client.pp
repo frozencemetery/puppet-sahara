@@ -6,7 +6,7 @@
 #
 # [*package_ensure*]
 #   (Optional) Ensure state for package.
-#   Default: present
+#   Default: present.
 #
 class sahara::client (
   $package_ensure = 'present'
