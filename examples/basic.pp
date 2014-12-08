@@ -42,4 +42,6 @@ class { 'sahara':
 }
 
 # Finally, make it accessible
-class { 'sahara::keystone::auth': }
+class { 'sahara::keystone::auth':
+  password => 'secrete',
+}
