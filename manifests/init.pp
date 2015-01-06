@@ -26,7 +26,7 @@
 #
 # [*service_host*]
 #   (Optional) Hostname for sahara to listen on
-#   Defaults to '127.0.0.1'.
+#   Defaults to '0.0.0.0'.
 #
 # [*service_port*]
 #   (Optional) Port for sahara to listen on
@@ -68,7 +68,7 @@ class sahara(
   $package_ensure      = 'present',
   $verbose             = false,
   $debug               = false,
-  $service_host        = '127.0.0.1',
+  $service_host        = '0.0.0.0',
   $service_port        = 8386,
   $use_neutron         = true,
   $database_connection = 'mysql://sahara:secrete@localhost:3306/sahara',
