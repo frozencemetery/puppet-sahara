@@ -38,7 +38,7 @@ class { 'sahara':
   identity_url        => 'http://127.0.0.1:35357/',
   service_host        => '0.0.0.0',
   service_port        => 8386,
-  use_neutron         => true,
+  use_floating_ips    => true,
 }
 
 # Finally, make it accessible
